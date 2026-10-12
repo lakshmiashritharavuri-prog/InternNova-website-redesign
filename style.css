@@ -1,0 +1,260 @@
+/* General Styles */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 85px;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #0b0b16;
+    color: #f5f5ff;
+    line-height: 1.7;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    font: inherit;
+}
+
+section {
+    scroll-margin-top: 75px;
+}
+
+:root {
+    --purple: #8055ff;
+    --pink: #dc4cff;
+    --blue: #38bdf8;
+    --dark: #0b0b16;
+    --card: #141425;
+    --text: #b7b7cf;
+    --border: #28283e;
+}
+
+/* Navigation */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(11, 11, 22, 0.96);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(12px);
+}
+
+.navbar {
+    max-width: 1200px;
+    min-height: 78px;
+    margin: auto;
+    padding: 15px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo,
+.footer-logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: #a78bfa;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.nav-links a {
+    color: #d4d4e8;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--blue);
+}
+
+.nav-links .nav-button {
+    padding: 10px 18px;
+    border-radius: 8px;
+    background: linear-gradient(90deg, var(--purple), var(--pink));
+    color: white;
+}
+
+.menu-btn {
+    display: none;
+    background: transparent;
+    color: white;
+    border: 1px solid var(--border);
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Hero */
+
+.hero {
+    max-width: 1200px;
+    min-height: 600px;
+    margin: auto;
+    padding: 90px 24px;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: 55px;
+}
+
+.tag {
+    display: inline-block;
+    padding: 7px 14px;
+    margin-bottom: 20px;
+    border: 1px solid #48316e;
+    border-radius: 30px;
+    background: #1c1430;
+    color: #c4b5fd;
+    font-size: 13px;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.hero h1 {
+    font-size: clamp(36px, 5vw, 62px);
+    line-height: 1.15;
+    margin-bottom: 22px;
+}
+
+.hero h1 span {
+    display: block;
+    background: linear-gradient(90deg, #a78bfa, #ec75e9, #38bdf8);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.hero-content > p {
+    color: var(--text);
+    max-width: 560px;
+    font-size: 17px;
+    margin-bottom: 28px;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 13px 23px;
+    border-radius: 9px;
+    font-weight: bold;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+}
+
+.primary-btn {
+    background: linear-gradient(90deg, var(--purple), var(--pink));
+    color: white;
+    box-shadow: 0 8px 25px #8055ff30;
+}
+
+.secondary-btn {
+    border: 1px solid #44445d;
+    color: white;
+}
+
+.hero-info {
+    display: flex;
+    gap: 35px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.hero-info h3 {
+    color: #c4b5fd;
+    font-size: 20px;
+}
+
+.hero-info p {
+    color: var(--text);
+    font-size: 13px;
+}
+
+/* Hero Illustration */
+
+.hero-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-card {
+    width: 100%;
+    max-width: 390px;
+    padding: 35px;
+    position: relative;
+    border: 1px solid #42315f;
+    border-radius: 25px;
+    text-align: center;
+    background:
+        radial-gradient(circle at top, #35205b, transparent 65%),
+        var(--card);
+    box-shadow: 0 20px 60px #0005;
+}
+
+.rocket {
+    font-size: 100px;
+    margin-bottom: 15px;
+    animation: float 3s ease-in-out infinite;
+}
+
+.image-card h2 {
+    font-size: 23px;
+    margin-bottom: 10px;
+}
+
+.image-card p {
+    color: var(--text);
+}
+
+.progress-box {
+    text-align: left;
+    margin-top: 28px;
+    font-size: 13px;
+}
+
+.progress {
+    height: 8px;
+    margin-top: 10px;
+    background: #303047;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress div {
+    width: 80%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--purple), var(--pink));
+    border-radius: 10px;
+}
+
+.floating-card {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 10px 16
