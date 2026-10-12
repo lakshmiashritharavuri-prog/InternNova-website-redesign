@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Website with Hamburger Menu</title>
+  <style>
+    /* 1. Global Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: #f8fafc;
+      color: #334155;
+    }
+
+    /* 2. Navigation Bar (Fixed Header) */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #0f172a;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      z-index: 1000;
+    }
+
+    .navbar {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+    }
+
+    .logo {
+      color: #ffffff;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: #38bdf8;
+    }
+
+    /* Desktop Navigation Links */
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #38bdf8;
+    }
+
+    /* 3. 3-Dash (Hamburger) Icon */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 28px;
+      height: 20px;
+      cursor: pointer;
+    }
+
+    .hamburger .line {
+      width: 100%;
+      height: 3px;
+      background-color: #ffffff;
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
+
+    /* 4. Page Sections (కంటెంట్ కోసం) */
+    section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 5rem 1.5rem;
+    }
+
+    #home {
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      color: #ffffff;
+    }
+
+    #home h1 {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+    }
+
+    #home p {
+      font-size: 1.2rem;
+      color: #94a3b8;
+      max-width: 600px;
+    }
+
+    #about {
+      background-color: #ffffff;
+    }
+
+    #services {
+      background-color: #f1f5f9;
+    }
+
+    #contact {
+      background-color: #ffffff;
+    }
+
+    section h2 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      color: #0f172a;
+    }
+
+    section p {
+      font-size: 1.1rem;
+      max-width: 650px;
+      line-height: 1.7;
+    }
+
+    /* 5. Mobile Responsive Media Query */
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #0f172a;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.8rem;
+        padding: 2rem 0;
+        transform: translateY(-150%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.4s ease;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      /* JavaScript క్లిక్ చేసినప్పుడు active అవుతుంది */
+      .nav-links.open {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+
+      /* 3 గీతలు 'X' గుర్తుగా మారే యానిమేషన్ */
+      .hamburger.active .line:nth-child(1) {
+        transform: translateY(8.5px) rotate(45deg);
+      }
+      .hamburger.active .line:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger.active .line:nth-child(3) {
+        transform: translateY(-8.5px) rotate(-45deg);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header>
+    <nav class="navbar">
+      <a href="#home" class="logo">My<span>Brand</span></a>
+
+      <!-- 3 గీతల హ్యాంబర్గర్ బటన్ -->
+      <div class="hamburger" id="hamburger-btn">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+
+      <!-- మెనూ లింక్స్ -->
+      <ul class="nav-links" id="nav-list">
+        <li><a href="#home" class="nav-item">Home</a></li>
+        <li><a href="#about" class="nav-item">About</a></li>
+        <li><a href="#services" class="nav-item">Services</a></li>
+        <li><a href="#contact" class="nav-item">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Page Content Sections -->
+  <section id="home">
+    <h1>Welcome to My Website</h1>
+    <p>ఈ వెబ్‌సైట్ మొబైల్ మరియు కంప్యూటర్ రెండింటిలోనూ అద్భుతంగా పనిచేస్తుంది. స్క్రీన్ సైజ్ తగ్గించి 3 dashes ని టెస్ట్ చేయండి.</p>
+  </section>
+
+  <section id="about">
+    <h2>About Us</h2>
+    <p>మేము ఆధునిక వెబ్ డిజైన్స్ మరియు రెస్పాన్సివ్ లేఅవుట్స్‌ను సులభంగా తయారు చేస్తాము.</p>
+  </section>
+
+  <section id="services">
+    <h2>Our Services</h2>
+    <p>వెబ్ డెవలప్‌మెంట్, UI/UX డిజైనింగ్, మరియు మొబైల్-ఫ్రెండ్లీ వెబ్‌సైట్ నిర్మాణం.</p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>మమ్మల్ని సంప్రదించడానికి మీ వివరాలు పంపండి: info@example.com</p>
+  </section>
+
+  <!-- JavaScript Code -->
+  <script>
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const navList = document.getElementById('nav-list');
+    const navItems = document.querySelectorAll('.nav-item');
+
+    // 3 Dashes పై క్లిక్ చేసినప్పుడు మెనూ ఓపెన్/క్లోజ్ అవ్వడం
+    hamburgerBtn.addEventListener('click', () => {
+      hamburgerBtn.classList.toggle('active');
+      navList.classList.toggle('open');
+    });
+
+    // మెనూలోని ఏదైనా లింక్ (Home, About...) క్లిక్ చేయగానే మెనూ ఆటోమేటిక్‌గా క్లోజ్ అవ్వడం
+    navItems.forEach(item => {
+      item.addEventListener('click', () => {
+        hamburgerBtn.classList.remove('active');
+        navList.classList.remove('open');
+      });
+    });
+  </script>
+
+</body>
+</html>
