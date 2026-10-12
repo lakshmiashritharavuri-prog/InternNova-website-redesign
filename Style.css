@@ -1,0 +1,53 @@
+/* =========================================
+   Mobile Responsive Fixes
+   ========================================= */
+
+@media (max-width: 768px) {
+    /* 1. Header & Navigation Fix */
+    header, nav {
+        padding: 10px 15px !important;
+        flex-wrap: wrap !important;
+        gap: 10px !important;
+    }
+
+    /* Reduce menu font size and spacing to fit smaller screens */
+    nav ul, .nav-links {
+        font-size: 13px !important;
+        gap: 10px !important;
+    }
+
+    /* Prevent the 'Get Started' button from clipping */
+    .btn, header button, .get-started {
+        padding: 6px 14px !important;
+        font-size: 13px !important;
+        white-space: nowrap;
+    }
+
+    /* 2. Hero Section Layout Fix (Change from row to column) */
+    .hero, .hero-container, section:first-of-type {
+        flex-direction: column !important;
+        padding: 20px 15px !important;
+        gap: 30px !important;
+        text-align: center;
+    }
+
+    /* Make hero text section take full width */
+    .hero-content, .hero-left {
+        width: 100% !important;
+    }
+
+    /* Stack CTA buttons vertically */
+    .hero-buttons, .buttons-group {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+
+    /* Center the rocket card on mobile */
+    .hero-card, .card, .hero-right {
+        width: 100% !important;
+        max-width: 320px !important;
+        margin: 0 auto !important;
+    }
+      }
