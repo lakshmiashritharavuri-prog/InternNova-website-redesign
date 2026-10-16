@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InternNova - Launch Your Career With Real Skills</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#090D16',
+                        cardBg: '#131B2E',
+                        cardBorder: '#1E293B',
+                        accentBlue: '#3B82F6',
+                        accentPurple: '#8B5CF6',
+                        accentIndigo: '#6366F1',
+                        accentAmber: '#F59E0B'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #090D16;
+            color: #F8FAFC;
+            overflow-x: hidden;
+        }
+        .glass-panel {
+            background: rgba(19, 27, 46, 0.7);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glow-effect {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(139, 92, 246, 0.05) 50%, transparent 80%);
+            z-index: -1;
+            pointer-events: none;
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #60A5FA 0%, #A78BFA 50%, #F472B6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-darkBg text-slate-100 relative antialiased selection:bg-indigo-500 selection:text-white">
+
+    <!-- Background Ambient Glows -->
+    <div class="glow-effect top-0 left-1/4 -translate-x-1/2"></div>
+    <div class="glow-effect top-[40%] right-10"></div>
+    <div class="glow-effect top-[75%] left-10"></div>
+
+    <!-- 1. Navigation Bar -->
+    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20 border-b border-white/10 glass-panel px-6 rounded-b-2xl my-2 shadow-2xl">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-pink-500 flex items-center justify-center shadow-lg shadow-indigo-500/30 group-hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-rocket text-white text-lg"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-xl font-black tracking-wider text-white">Intern<span class="text-gradient">Nova</span></span>
+                        <span class="text-[10px] text-slate-400 font-medium tracking-widest uppercase -mt-1">Launch Your Career</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Menu -->
+                <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-slate-300">
+                    <a href="#about" class="hover:text-indigo-400 transition-colors">About</a>
+                    <a href="#programs" class="hover:text-indigo-400 transition-colors">Programs</a>
+                    <a href="#domains" class="hover:text-indigo-400 transition-colors">Domains</a>
+                    <a href="#mentorship" class="hover:text-indigo-400 transition-colors">Mentorship</a>
+                    <a href="#workshops" class="hover:text-indigo-400 transition-colors">Workshops</a>
+                    <a href="#testimonials" class="hover:text-indigo-400 transition-colors">Testimonials</a>
+                    <a href="#faq" class="hover:text-indigo-400 transition-colors">FAQ</a>
+                </nav>
+
+                <!-- CTA Buttons -->
+                <div class="hidden md:flex items-center gap-4">
+                    <button onclick="openModal('Login')" class="px-4 py-2 text-sm font-semibold text-slate-300 hover:text-white transition-colors">Log In</button>
+                    <button onclick="openModal('Apply')" class="px-5 py-2.5 text-sm font-semibold text-white bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 hover:scale-[1.02] active:scale-95 transition-all">Apply Now</button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleMobileMenu()" class="lg:hidden text-slate-300 hover:text-white p-2 text-xl focus:outline-none">
+                    <i class="fa-solid fa-bars" id="menu-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Dropdown -->
+        <div id="mobile-menu" class="hidden lg:hidden px-4 pt-2 pb-6 glass-panel border-b border-white/10 space-y-3">
+            <a href="#about" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-slate-300 hover:bg-white/5 font-medium">About</a>
+            <a href="#programs" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-slate-300 hover:bg-white/5 font-medium">Programs</a>
+            <a href="#domains" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-slate-300 hover:bg-white/5 font-medium">Domains</a>
+            <a href="#mentorship" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-slate-300 hover:bg-white/5 font-medium">Mentorship</a>
+            <a href="#workshops" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-slate-300 hover:bg-white/5 font-medium">Workshops</a>
+            <a href="#testimonials" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-slate-300 hover:bg-white/5 font-medium">Testimonials</a>
+            <a href="#faq" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-slate-300 hover:bg-white/5 font-medium">FAQ</a>
+            <div class="pt-4 flex flex-col gap-3">
+                <button onclick="openModal('Login')" class="w-full py-2.5 rounded-xl border border-white/10 text-slate-200 font-semibold hover:bg-white/5">Log In</button>
+                <button onclick="openModal('Apply')" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold shadow-lg shadow-indigo-500/30">Apply Now</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. Hero Section -->
+    <section class="relative pt-36 pb-20 md:pt-44 md:pb-32 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Left Content -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-semibold uppercase tracking-wider animate-pulse">
+                        <i class="fa-solid fa-fire text-amber-400"></i> Next Batch Starts Soon • Limited Seats
+                    </div>
+                    <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.1]">
+                        Bridge the Gap Between <span class="text-gradient">College & Career</span>
+                    </h1>
+                    <p class="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                        Gain authentic real-world experience through professional internships, 1-on-1 industry mentorship, and live collaborative tech projects at <strong class="text-white font-semibold">InternNova</strong>.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#programs" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-bold rounded-2xl shadow-xl shadow-indigo-500/30 hover:scale-105 active:scale-95 transition-all text-center flex items-center justify-center gap-3">
+                            Explore Programs <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        <a href="#about" class="w-full sm:w-auto px-8 py-4 glass-panel hover:bg-white/10 text-white font-bold rounded-2xl border border-white/10 transition-all text-center flex items-center justify-center gap-3">
+                            <i class="fa-regular fa-circle-play text-indigo-400 text-lg"></i> Watch Overview
+                        </a>
+                    </div>
+
+                    <!-- Quick Trust Metrics -->
+                    <div class="pt-8 grid grid-cols-3 gap-6 border-t border-white/10 max-w-lg mx-auto lg:mx-0">
+                        <div>
+                            <div class="text-2xl sm:text-3xl font-extrabold text-white">10K+</div>
+                            <div class="text-xs text-slate-400 font-medium mt-0.5">Active Interns</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl sm:text-3xl font-extrabold text-white">95%</div>
+                            <div class="text-xs text-slate-400 font-medium mt-0.5">Placement Rate</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl sm:text-3xl font-extrabold text-white">50+</div>
+                            <div class="text-xs text-slate-400 font-medium mt-0.5">Partner Tech Firms</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Visual / Interactive Card -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative mx-auto max-w-md lg:max-w-none">
+                        <div class="absolute -inset-1.5 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-3xl blur-xl opacity-30 animate-pulse"></div>
+                        <div class="glass-panel p-6 sm:p-8 rounded-3xl relative border border-white/10 space-y-6 shadow-2xl">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-12 h-12 rounded-xl bg-indigo-500/20 border border-indigo-500/30 flex items-center justify-center text-indigo-400 text-xl font-bold">
+                                        <i class="fa-solid fa-laptop-code"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-bold text-white text-base">Full Stack Web Dev</h3>
+                                        <p class="text-xs text-indigo-400 font-medium">Live Internship Project</p>
+                                    </div>
+                                </div>
+                                <span class="px-3 py-1 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold rounded-full">Active</span>
+                            </div>
+
+                            <div class="space-y-3 bg-darkBg/50 p-4 rounded-2xl border border-white/5">
+                                <div class="flex justify-between text-xs text-slate-400 font-medium">
+                                    <span>Project Milestones</span>
+                                    <span class="text-indigo-400">4 of 5 Completed</span>
+                                </div>
+                                <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                                    <div class="bg-gradient-to-r from-indigo-500 to-purple-500 h-full w-4/5 rounded-full"></div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-3">
+                                <div class="flex items-center gap-3 text-sm text-slate-300">
+                                    <i class="fa-solid fa-circle-check text-indigo-400"></i>
+                                    <span>Real Client Requirement Analysis</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-sm text-slate-300">
+                                    <i class="fa-solid fa-circle-check text-indigo-400"></i>
+                                    <span>Weekly Code Reviews with Mentors</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-sm text-slate-300">
+                                    <i class="fa-solid fa-circle-check text-indigo-400"></i>
+                                    <span>GitHub Portfolio & Verified Certificate</span>
+                                </div>
+                            </div>
+
+                            <button onclick="openModal('Apply')" class="w-full py-3 bg-white/10 hover:bg-white/15 border border-white/10 rounded-xl font-semibold text-white transition-all text-sm flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-bolt text-amber-400"></i> Claim Your Internship Spot
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. About InternNova -->
+    <section id="about" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-semibold uppercase tracking-wider">
+                        <i class="fa-solid fa-compass"></i> About InternNova
+                    </div>
+                    <h2 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight">
+                        Transforming Traditional Learning Into <span class="text-gradient">Real-World Mastery</span>
+                    </h2>
+                    <p class="text-slate-400 text-base sm:text-lg leading-relaxed">
+                        At InternNova, we believe that theoretical knowledge alone isn't enough to thrive in today's hyper-competitive tech landscape. Our platform brings industry leaders, structured task assignments, and practical project execution under one roof.
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+                        <div class="glass-panel p-5 rounded-2xl border border-white/10 space-y-2">
+                            <div class="w-10 h-10 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold">
+                                <i class="fa-solid fa-bullseye"></i>
+                            </div>
+                            <h4 class="font-bold text-white text-lg">Mission-Driven</h4>
+                            <p class="text-slate-400 text-sm">Empowering 100,000+ students with career-ready capabilities by 2027.</p>
+                        </div>
+                        <div class="glass-panel p-5 rounded-2xl border border-white/10 space-y-2">
+                            <div class="w-10 h-10 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center font-bold">
+                                <i class="fa-solid fa-shield-halved"></i>
+                            </div>
+                            <h4 class="font-bold text-white text-lg">Industry Standard</h4>
+                            <p class="text-slate-400 text-sm">Curriculum crafted in collaboration with top engineering executives.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="glass-panel p-8 rounded-3xl border border-white/10 space-y-6 relative overflow-hidden">
+                        <div class="absolute -top-10 -right-10 w-40 h-40 bg-purple-600/20 rounded-full blur-3xl"></div>
+                        <h3 class="text-2xl font-bold text-white">Our Core Pillars</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-4 p-4 rounded-2xl bg-darkBg/60 border border-white/5">
+                                <div class="w-10 h-10 rounded-xl bg-indigo-600/20 text-indigo-400 flex items-center justify-center shrink-0 font-bold mt-1">01</div>
+                                <div>
+                                    <h4 class="font-bold text-white">Hands-On Execution</h4>
+                                    <p class="text-slate-400 text-sm mt-1">Build live applications and portfolios rather than watching endless tutorials.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4 p-4 rounded-2xl bg-darkBg/60 border border-white/5">
+                                <div class="w-10 h-10 rounded-xl bg-purple-600/20 text-purple-400 flex items-center justify-center shrink-0 font-bold mt-1">02</div>
+                                <div>
+                                    <h4 class="font-bold text-white">Expert Code Reviews</h4>
+                                    <p class="text-slate-400 text-sm mt-1">Receive constructive pull request feedback from senior software architects.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4 p-4 rounded-2xl bg-darkBg/60 border border-white/5">
+                                <div class="w-10 h-10 rounded-xl bg-pink-600/20 text-pink-400 flex items-center justify-center shrink-0 font-bold mt-1">03</div>
+                                <div>
+                                    <h4 class="font-bold text-white">Career Accelerator</h4>
+                                    <p class="text-slate-400 text-sm mt-1">Direct recommendation opportunities with hiring partners and recruiters.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Internship Programs Cards -->
+    <section id="programs" class="py-24 relative bg-slate-950/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-semibold uppercase tracking-wider">
+                    <i class="fa-solid fa-graduation-cap"></i> Internship Programs
+                </div>
+                <h2 class="text-3xl sm:text-5xl font-black tracking-tight">
+                    Choose Your <span class="text-gradient">Career Track</span>
+                </h2>
+                <p class="text-slate-400 text-base sm:text-lg">
+                    Structured multi-week programs designed to take you from foundational concepts to professional competence.
+                </p>
+            </div>
+
+     
